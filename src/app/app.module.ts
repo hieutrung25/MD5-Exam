@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ListComponent } from './player/list/list.component';
 import { CreateComponent } from './player/create/create.component';
 import { EditComponent } from './player/edit/edit.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,12 @@ import { EditComponent } from './player/edit/edit.component';
     CreateComponent,
     EditComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
