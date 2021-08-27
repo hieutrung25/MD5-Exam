@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
 import {PlayerService} from '../../service/player.service';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  selector: 'app-delete',
+  templateUrl: './delete.component.html',
+  styleUrls: ['./delete.component.css']
 })
-export class EditComponent implements OnInit {
+export class DeleteComponent implements OnInit {
   playerForm: FormGroup = new FormGroup({
     name: new FormControl(),
     champ: new FormControl(),
@@ -17,9 +17,9 @@ export class EditComponent implements OnInit {
     des: new FormControl()
   });
   id: number;
-
   constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
+      // @ts-ignore
       this.id = +paramMap.get(`id`);
       this.getPlayer(this.id);
     });
@@ -37,11 +37,10 @@ export class EditComponent implements OnInit {
       });
     });
   }
-  edit(id: number) {
-    const player = this.playerForm.value;
-    this.playerService.edit(id, player).subscribe(data => {
-      console.log('Ok');
+  delete(id: number) {
+    this.playerService.delete(id).subscribe(data => {
       this.router.navigate(['list']);
+      alert('done');
     });
   }
 }

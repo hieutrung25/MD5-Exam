@@ -8,13 +8,16 @@ import { ListComponent } from './player/list/list.component';
 import { CreateComponent } from './player/create/create.component';
 import { EditComponent } from './player/edit/edit.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DeleteComponent } from './player/delete/delete.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    DeleteComponent
   ],
     imports: [
         BrowserModule,

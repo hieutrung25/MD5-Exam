@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Player} from '../model/player';
-import {environment} from '../../environments/environment';
-
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +22,14 @@ export class PlayerService {
   }
 
   edit(id: number, player: Player): Observable<Player> {
-    return this.http.put<Player>(this.API + '/'  + id, player);
+    return this.http.put<Player>(this.API + '/' + id, player);
   }
+
   delete(id: number): Observable<Player> {
-    return this.http.delete<Player>(this.API  + '/' + id);
+    return this.http.delete<Player>(this.API + '/' + id);
+  }
+
+  findById(id: number): Observable<Player> {
+    return this.http.get <Player>(this.API + '/' + id);
   }
 }
