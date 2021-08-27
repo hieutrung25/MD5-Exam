@@ -27,16 +27,13 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   getPlayer(id: number) {
     this.playerService.findById(id).subscribe(data => {
-      this.playerForm = new FormGroup({
-        name: new FormControl(data.name),
-        champ: new FormControl(data.champ),
-        kda: new FormControl(data.kda),
-        des: new FormControl(data.des)
-      });
+      this.playerForm.patchValue(data);
     });
   }
+
   edit(id: number) {
     const player = this.playerForm.value;
     this.playerService.edit(id, player).subscribe(data => {
